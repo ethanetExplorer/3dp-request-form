@@ -11,6 +11,7 @@ import {
 import { useAdminSettings } from '../context/AdminSettingsContext';
 import { verifyPassword, setAuthenticatedSession, DEFAULT_ADMIN_PASSWORD_HASH } from '../utils/auth';
 import { navigate } from '../router';
+import { DemoNotice } from './DemoNotice';
 
 interface AdminLoginProps {
   onSuccess: () => void;
@@ -59,6 +60,9 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onSuccess }) => {
         isDark ? 'bg-neutral-950 text-neutral-100' : 'bg-[#f0ebf8]/40 text-neutral-900'
       }`}
     >
+      <div className="w-full max-w-md mb-4">
+        <DemoNotice />
+      </div>
       <div
         className={`w-full max-w-md rounded-2xl border shadow-xl overflow-hidden transition-all ${
           isDark
@@ -200,4 +204,3 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onSuccess }) => {
     </div>
   );
 };
-

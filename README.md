@@ -39,7 +39,13 @@ Open the local URL printed by Vite (by default, `http://localhost:5174`).
 
 ## Model files
 
-STL files are parsed in the browser. STEP/STP files are parsed with the included OpenCASCADE WebAssembly module, served from `public/`. Keep `public/occt-import-js.js` and `public/occt-import-js.wasm` together when deploying; the app expects these assets at the site root.
+STL files are parsed in the browser. STEP/STP files are parsed with the included OpenCASCADE WebAssembly module, served from `public/`. Keep `public/occt-import-js.js` and `public/occt-import-js.wasm` together when deploying.
+
+## GitHub Pages
+
+The GitHub Actions workflow deploys the site to GitHub Pages whenever a commit is pushed to `main`. In the repository, open **Settings → Pages** and set the build and deployment source to **GitHub Actions**. Once the workflow completes, the site is available at <https://ethanetExplorer.github.io/3dp-request-form/>.
+
+The workflow builds the app with the repository's project-site path, publishes `dist/`, and includes a 404 fallback so direct links such as `/adminpanel` load correctly. For local development, Vite uses the root path automatically.
 
 ## Tech stack
 

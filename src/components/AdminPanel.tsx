@@ -32,6 +32,7 @@ import {
 import { useAdminSettings } from '../context/AdminSettingsContext';
 import { Material, MaterialType, PrintPreset, NOZZLE_LAYER_HEIGHTS, SlicerInfillPattern, SlicerSupportType } from '../types';
 import { navigate } from '../router';
+import { DemoNotice } from './DemoNotice';
 import { RichTextEditor } from './RichTextEditor';
 import {
   clearAuthenticatedSession,
@@ -456,7 +457,8 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onLogout }) => {
       </header>
 
       {/* Main Admin Content Container */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 space-y-5">
+        <DemoNotice />
         {/* Navigation Tabs */}
         <div className="flex overflow-x-auto no-scrollbar gap-1.5 p-1 rounded-xl bg-neutral-200/70 dark:bg-neutral-900 border border-neutral-300/50 dark:border-neutral-800 mb-6">
           {[
@@ -1800,4 +1802,3 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onLogout }) => {
     </div>
   );
 };
-

@@ -18,7 +18,7 @@ async function getOcctInstance(): Promise<any> {
       const initFn = (fn: any) => {
         try {
           const res = fn({
-            locateFile: (name: string) => `/${name}`
+            locateFile: (name: string) => `${import.meta.env.BASE_URL}${name}`
           });
           resolve(res);
         } catch (err) {
@@ -30,7 +30,7 @@ async function getOcctInstance(): Promise<any> {
         initFn((window as any).occtimportjs);
       } else if (typeof document !== 'undefined') {
         const script = document.createElement('script');
-        script.src = '/occt-import-js.js';
+        script.src = `${import.meta.env.BASE_URL}occt-import-js.js`;
         script.onload = () => {
           if ((window as any).occtimportjs) {
             initFn((window as any).occtimportjs);
@@ -211,7 +211,7 @@ export async function loadSampleModel(sampleId: string): Promise<ModelData> {
   }
 
   if (sampleId === 'sample-step-bracket') {
-    const response = await fetch('/samples/bearing_mount.step');
+    const response = await fetch(`${import.meta.env.BASE_URL}samples/bearing_mount.step`);
     if (!response.ok) {
       throw new Error('Failed to load sample STEP file from server');
     }

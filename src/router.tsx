@@ -5,7 +5,8 @@ import { AdminLogin } from './components/AdminLogin';
 import { isSessionAuthenticated } from './utils/auth';
 
 export const navigate = (path: string) => {
-  window.history.pushState({}, '', path);
+  const route = path.replace(/^\/+/, '');
+  window.history.pushState({}, '', `${import.meta.env.BASE_URL}${route}`);
   window.dispatchEvent(new PopStateEvent('popstate'));
 };
 
@@ -25,7 +26,11 @@ export const Router: React.FC = () => {
     };
   }, []);
 
-  const normalized = currentPath.toLowerCase().replace(/\/$/, '') || '/';
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const appPath = currentPath.startsWith(basePath)
+    ? currentPath.slice(basePath.length)
+    : currentPath;
+  const normalized = appPath.toLowerCase().replace(/\/$/, '') || '/';
 
   if (normalized === '/adminpanel') {
     if (!isAuthenticated) {

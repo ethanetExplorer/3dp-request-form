@@ -16,6 +16,7 @@ import { loadModelFromFile, loadSampleModel } from './utils/modelLoaders';
 import { useAdminSettings } from './context/AdminSettingsContext';
 import { RotateCw, Plus, AlertCircle } from 'lucide-react';
 import { sanitizeFormattedText } from './utils/sanitizeText';
+import { DemoNotice } from './components/DemoNotice';
 
 const defaultFilament: Material = {
   id: 'pla-black',
@@ -446,6 +447,7 @@ export const App: React.FC = () => {
       <Header totalCost={grandTotalCost} />
 
       <main className="max-w-2xl sm:max-w-3xl mx-auto px-4 py-6 space-y-4">
+        <DemoNotice />
         {/* Google Form Header Card */}
         <div className={`rounded-xl border shadow-xs overflow-hidden transition-colors ${
           isDark ? 'bg-neutral-900 border-neutral-800' : 'bg-white border-neutral-200/90'
